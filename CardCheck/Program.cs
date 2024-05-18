@@ -15,10 +15,14 @@
                 cardAp.CardNumber = Console.ReadLine();
 
 
-                CardValidator service = new CardValidator();
+                CardValidator validatorService = new CardValidator();
 
-                bool isvalid = service.Validate(cardAp);
+                bool isvalid = validatorService.Validate(cardAp);
                 Console.WriteLine($" Card Number is {isvalid} ");
+
+                BinIdentify binService = new BinIdentify();
+                string bankName = binService.DetectBin(cardAp.CardNumber);
+                Console.WriteLine(bankName);
 
 
                 Console.WriteLine("end");

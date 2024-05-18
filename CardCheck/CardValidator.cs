@@ -10,15 +10,11 @@ public class CardValidator
 
         int firstDigit = Convert.ToInt32(card[0].ToString());
 
-        if (firstDigit == 5 || firstDigit == 6)
+        if (firstDigit == 5 || firstDigit == 6 || firstDigit == 8 || firstDigit == 9) // ?????
         {
             result = Luhn(card);
         }
-        else if (firstDigit == 8 || firstDigit == 9)
-        {
-            //etebary
-        }
-        else//essential?
+        else
         {
             result = false;
         }
@@ -29,21 +25,21 @@ public class CardValidator
     {
         bool result = false;
         int sum = 0;
-        int stab = 0;
+        int mul = 0;
 
         for (int i = cardNumber.Length - 2; i >= 0; i -= 2)
         {
-            stab = Convert.ToInt32(cardNumber[i].ToString()) * 2;
+            mul = Convert.ToInt32(cardNumber[i].ToString()) * 2;
 
-            if (stab > 9)
+            if (mul > 9)
             {
-                while (stab != 0)
+                while (mul != 0)
                 {
-                    sum += stab % 10;
-                    stab /= 10;
+                    sum += mul % 10;
+                    mul /= 10;
                 }
             }
-            sum += stab;
+            sum += mul;
         }
 
         for (int i = cardNumber.Length - 1; i >= 0; i -= 2)

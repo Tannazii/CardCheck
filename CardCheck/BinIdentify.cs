@@ -1,6 +1,6 @@
-﻿internal class BinIdentify
+﻿public class BinIdentify
 {
-    Dictionary<string, string> bin = new Dictionary<string, string>()
+    Dictionary<string, string> bins = new Dictionary<string, string>()
     {
         {"Ayendeh","636214"},
         {"E.Novin","627412" },
@@ -26,7 +26,7 @@
         {"Sarmayeh","639607"},
         {"Sina","639346"},
         {"Shahr","504706"},
-        //{"Saderat","603769"},
+        {"Saderat1","603769"},
         {"Sanat-Madan","627961"},
         {"Resalat","504172"},
         {"Mehr-Iran","606373"},
@@ -44,16 +44,19 @@
         {"Kosar","505801"},
         {"Melal","606256"},
         {"Noor","507677"},
+        {"Wallet","983255"},
+        {"Debit","888888" },
+        {"Tali","999999"},
     };
 
-    public string Bin(string card)
+    public string DetectBin(string card)
     {
         string bank = " ";
-        foreach (KeyValuePair<string, string> ele2 in bin)
+        foreach (KeyValuePair<string, string> bin in bins)
         {
-            if (card.Substring(0, 6) == ele2.Value)
+            if (card.Substring(0 , 6) == bin.Value)
             {
-                bank = ele2.Key;
+                bank = bin.Key;
             }
         }
         return bank;
